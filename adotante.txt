@@ -1,0 +1,6 @@
+1. f;5 anos;f;f;f;f;f
+2. g;6 anos;f;f;j;j;j
+3. d;6 anos;h;f;g;f;g
+1. f;5 anos;f;f;f;f;f
+2. g;6 anos;f;f;j;j;j
+3. d;6 anos;h;f;g;f;g

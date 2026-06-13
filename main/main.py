@@ -1,7 +1,9 @@
 from interface import *
 from time import sleep
 from rich import print
-from libArquivo import *
+from lib_adotante import *
+from lib_animal import *
+from lib_arquivo import *
 
 arq_animais = 'animais.txt'
 arq_adotante = 'adotante.txt'
@@ -17,7 +19,12 @@ while True:
     if resposta == 1:
         adicionar_animal()
     elif resposta == 3:
-        opc3()
+        opção_3()
+    elif resposta == 4:
+        lerArquivo_adotante(arq_adotante)
+        print(linha())
+        quem_remover = input('Escolha o número de quem remover: ')
+        remover_adotante(quem_remover)
     elif resposta == 5:
         lista_animais(arq_animais)
     elif resposta==6:
