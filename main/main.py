@@ -23,7 +23,7 @@ while True:
     elif resposta == 4:
         lerArquivo_adotante(arq_adotante)
         print(linha())
-        quem_remover = input('Escolha o número de quem remover: ')
+        quem_remover = int(input('Escolha o número de quem remover: '))
         remover_adotante(quem_remover)
     elif resposta == 5:
         lista_animais(arq_animais)

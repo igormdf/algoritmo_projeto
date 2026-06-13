@@ -1,6 +1,7 @@
 from rich import print
 from interface import *
 from rich.console import Console
+from rich.panel import Panel
 
 Console = Console()
 arq_adotante = 'adotante.txt'
@@ -15,7 +16,7 @@ def lerArquivo_adotante(nome):
         c = 1
         for linha in a:
             dado = linha.split(';')
-            print(f'{dado[0]} - {dado[1]} - {dado[2]} - {dado[3]} - {dado[4]} - {dado[5]} - {dado[6]}')
+            print(f'{c}. {dado[0]} - {dado[1]} - {dado[2]} - {dado[3]} - {dado[4]} - {dado[5]} - {dado[6]}')
             c += 1
         if c == 1:
             Console.print(f'[yellow]Ainda não foram adicionados adotantes a lista![/]')
@@ -23,17 +24,17 @@ def lerArquivo_adotante(nome):
         a.close()
 
 def cadastrar_adotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, data_nascimento=0, endereço='Não definido', cidade='Não definido', estado='Não definido'):
-    a = open(arq_adotante, 'r')
-    linha = a.readlines()
-    total_linhas = str(len(linha) + 1)
-    a.close()
+    #a = open(arq_adotante, 'r')
+    #linha = a.readlines()
+    #total_linhas = str(len(linha) + 1)
+    #a.close()
     try:
         a = open(arq_adotante, 'at')
     except:
         print('[red]Houve um ERRO na abertura do arquivo[[/]]')
     else:
         try:
-            a.write(f'{total_linhas}. {nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}\n')
+            a.write(f'{nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}\n')
         except:
             print('[red]Houve um ERRO ao escrever os dados![[/]]')
         else:
@@ -55,14 +56,25 @@ def remover_adotante(n):
     try:
         a = open(arq_adotante, 'r')
     except:
-        print('[red]Houve um ERRO ao ler o arquivo[/]')
+        print('[red]Houve um ERRO na abertura do arquivo[[/]]')
     else:
+        linha_remover = n - 1
         linhas = a.readlines()
-        removida = [linha for linha in linhas if '{n}' not in linha]
-        a.close()
+        while True:
+            if linha_remover < len(linhas):
+                del linhas[linha_remover]
+                break
+            else:
+                print('[red]Esse número não é válido!!![/]')
+                n = int(input('Escolha o número de quem remover: '))
         try:
             a = open(arq_adotante, 'at')
         except:
             print('[red]Houve um ERRO na abertura do arquivo[[/]]')
         else:
-            a.writelines(removida)
+            try:
+                a.writelines(linhas)
+            except:
+                print('[red]Houve um ERRO ao escrever os dados![[/]]')
+            else:
+                print(f'[green]linha {n} removida COM SUCESSO!!![/]')
