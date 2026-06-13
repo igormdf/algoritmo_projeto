@@ -22,7 +22,7 @@ while True:
         lista_animais()
         print(linha())
         quem_remover = int(input('Escolha o número de qual animal remover: '))
-        remover_animal
+        remover_animal(quem_remover)
     elif resposta == 3:
         opção_3()
     elif resposta == 4:
@@ -42,18 +42,3 @@ while True:
     else:
         print('[red]ERRO! Digite uma opção válida![/]')
     sleep(2)
-
-
-
-
-
-
-
-
-
-#   Sistema de Adoção de Pets: Cadastro de animais em um abrigo
-#(nome, espécie, raça, cor, porte, idade, observações) e perfis de
-#adotantes (cpf, nome, data de nascimento, endereço, cidade, estado). O
-#menu deverá dispor, pelo menos, das seguintes opções: Adicionar animal,
-#remover animal, adicionar adotante, remover adotante, listar animais,
-#listar adotantes, buscar animal para adoção
