@@ -17,7 +17,12 @@ if not arquivoExiste(arq_adotante):
 while True:
     resposta = menu()
     if resposta == 1:
-        adicionar_animal()
+        opção_1()
+    elif resposta == 2:
+        lista_animais()
+        print(linha())
+        quem_remover = int(input('Escolha o número de qual animal remover: '))
+        remover_animal
     elif resposta == 3:
         opção_3()
     elif resposta == 4:
@@ -29,6 +34,8 @@ while True:
         lista_animais(arq_animais)
     elif resposta==6:
         lerArquivo_adotante(arq_adotante)
+    elif resposta == 7:
+        pass
     elif resposta == 8:
         cabeçalho('Saindo so sistema... até logo!')
         break

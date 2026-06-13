@@ -7,16 +7,13 @@ arq_animais = 'animais.txt'
 
 def adicionar_animal(arq_animais = "animais.txt", nome_animal = "deconhecido", especie_animal = "desconhecida", raca_animal = "raça não informada",
     cor_animal = "cor não informada", porte_animal = "Porte não informado", idade_animal = "0", observacao_animal = "Não ha observações."  ):
-    a = open(arq_animais, 'r')
-    linha = a.readlines()
-    total_linhas = len(linha) + 1
     try:
         a = open(arq_animais, 'at')
     except:
         print("Houve um erro ao adicionar os dados do animal!")
     else:
         try:
-            a.write(f'{total_linhas}. {nome_animal};{especie_animal};{raca_animal};{cor_animal};{porte_animal};{idade_animal};{observacao_animal};\n')
+            a.write(f'{nome_animal};{especie_animal};{raca_animal};{cor_animal};{porte_animal};{idade_animal};{observacao_animal};\n')
         except:
             print("Houve um erro ao escrever os dados!")
         else:
@@ -46,4 +43,31 @@ def opção_1():
     porte_animal = Console.input("[green]5.[/] Informe se o porte do animal é Pequeno, Médio ou Grande: ")
     idade_animal = Console.input("[green]6.[/] Informe a idade do animal: ")
     observacao_animal = Console.input("[green]7.[/] se necessário adicione alguma observação ao animal adicionado: ")
-    adicionar_animal(nome_animal,especie_animal,raca_animal,cor_animal,porte_animal,idade_animal,observacao_animal)
+    adicionar_animal(arq_animais,nome_animal,especie_animal,raca_animal,cor_animal,porte_animal,idade_animal,observacao_animal)
+
+def remover_animal(n):
+    try:
+        a = open(arq_animais, 'r')
+    except:
+        print(f'[red]Houve um erro ao tentar ler o arquivo')
+    else:
+        animal_remover = n-1
+        linhas = a.readlines()
+        while True:
+            if animal_remover <= len(linhas):
+                del linhas[animal_remover]
+                break
+            else:
+                Console.print('[red]Esse número não é valido[/]')
+                n = int(input("Escolha um numero válido para resolver: "))
+        try:
+            a = open(arq_animais, 'w')
+        except:
+            Console.print(f'[red]Não foi possivel ler a lista![/]')
+        else:
+            try:
+                a.writelines(linhas)
+            except:
+                Console.print(f'[red] houve um erro ao escrever os dados')
+            else:
+                Console.print(f'[green]Animal[/] correspondente ao número {n} [red]removida com sucesso[/]')

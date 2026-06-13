@@ -77,4 +77,4 @@ def remover_adotante(n):
             except:
                 print('[red]Houve um ERRO ao escrever os dados![[/]]')
             else:
-                print(f'[green]linha {n} removida COM SUCESSO!!![/]')
+                print(f'[green]Adotante[/] correspondente ao número {n} [red]removida com sucesso[/]')
