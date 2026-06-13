@@ -68,7 +68,7 @@ def remover_adotante(n):
                 print('[red]Esse número não é válido!!![/]')
                 n = int(input('Escolha o número de quem remover: '))
         try:
-            a = open(arq_adotante, 'at')
+            a = open(arq_adotante, 'w')
         except:
             print('[red]Houve um ERRO na abertura do arquivo[[/]]')
         else:
