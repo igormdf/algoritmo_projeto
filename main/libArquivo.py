@@ -17,28 +17,27 @@ def criarArquivo(nome):
     else:
         print(f'[green]Arquivo {nome} criado com sucesso![/] ')
 
-def lerArquivo(nome):
+def lerArquivo_adotante(nome):
     try:
         a = open(nome, 'rt')
     except:
-        print('Erro ao ler o arquivo')
+        print('[red]Erro ao ler o arquivo[/]')
     else:
-        cabeçalho('Pessoas cadastradas')
+        cabeçalho('Adotantes cadastrados')
         for linha in a:
             dado = linha.split(';')
-            dado[1] = dado[1].replace('\n','')
-            print(f'{dado[0]:<30}{dado[1]} anos')
+            print(f'{dado[0]} - {dado[1]} - {dado[2]} - {dado[3]} - {dado[4]} - {dado[5]} - {dado[6]}')
     finally:
         a.close()
 
-def cadastrar(arq, nome = 'desconhecido', idade = 0):
+def cadastrar_adotante(arq, nome = 'desconhecido', idade = 0, cpf=0, data_nascimento=0, endereço='Não definido', cidade='Não definido', estado='Não definido'):
     try:
         a = open(arq, 'at')
     except:
         print('[red]Houve um ERRO na abertura do arquivo[[/]]')
     else:
         try:
-            a.write(f'{nome};{idade}\n')
+            a.write(f'{nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}')
         except:
             print('[red]Houve um ERRO ao escrever os dados![[/]]')
         else:

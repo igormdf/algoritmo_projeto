@@ -2,6 +2,7 @@ from interface import *
 from time import sleep
 from rich import print
 from libArquivo import *
+from libOpções import *
 
 arq_animais = 'animais.txt'
 arq_adotante = 'adotante.txt'
@@ -16,6 +17,10 @@ while True:
     resposta = menu()
     if resposta == 1:
         print("carai")
+    elif resposta == 3:
+         opc3()
+    elif resposta==6:
+        lerArquivo_adotante(arq_adotante)
     elif resposta == 8:
         cabeçalho('Saindo so sistema... até logo!')
         break
@@ -23,7 +28,6 @@ while True:
         print('[red]ERRO! Digite uma opção válida![/]')
     sleep(2)
         
-
 
 
 

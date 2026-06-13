@@ -31,7 +31,7 @@ def leiaint(msg):
             valor = int(n)
             ok = True
         else:
-            print('\033[031mERRO! Digite um número inteiro válido \033[m')
+            print('[red]ERRO! Digite um número inteiro válido[/]')
         if ok:
             break
     return valor
