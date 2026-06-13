@@ -2,7 +2,6 @@ from interface import *
 from time import sleep
 from rich import print
 from libArquivo import *
-from libOpções import *
 
 arq_animais = 'animais.txt'
 arq_adotante = 'adotante.txt'
@@ -16,9 +15,11 @@ if not arquivoExiste(arq_adotante):
 while True:
     resposta = menu()
     if resposta == 1:
-        print("carai")
+        adicionar_animal()
     elif resposta == 3:
-         opc3()
+        opc3()
+    elif resposta == 5:
+        lista_animais(arq_animais)
     elif resposta==6:
         lerArquivo_adotante(arq_adotante)
     elif resposta == 8:
@@ -27,7 +28,7 @@ while True:
     else:
         print('[red]ERRO! Digite uma opção válida![/]')
     sleep(2)
-        
+
 
 
 
