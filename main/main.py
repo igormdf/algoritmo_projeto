@@ -4,9 +4,11 @@ from rich import print
 from lib_adotante import *
 from lib_animal import *
 from lib_arquivo import *
+from rich.console import Console
 
 arq_animais = 'animais.txt'
 arq_adotante = 'adotante.txt'
+Console = Console()
 
 if not arquivoExiste(arq_animais):
     criarArquivo(arq_animais)
@@ -21,24 +23,28 @@ while True:
     elif resposta == 2:
         lista_animais()
         print(linha())
-        quem_remover = int(input('Escolha o número de qual animal remover: '))
-        remover_animal(quem_remover)
+        remover_animal()
     elif resposta == 3:
         opção_3()
     elif resposta == 4:
         lerArquivo_adotante(arq_adotante)
         print(linha())
-        quem_remover = int(input('Escolha o número de quem remover: '))
-        remover_adotante(quem_remover)
+        remover_adotante()
     elif resposta == 5:
         lista_animais(arq_animais)
     elif resposta==6:
         lerArquivo_adotante(arq_adotante)
     elif resposta == 7:
-        pass
+        buscar_animal()
     elif resposta == 8:
         cabeçalho('Saindo so sistema... até logo!')
         break
     else:
         print('[red]ERRO! Digite uma opção válida![/]')
-    sleep(2)
+
+    print(continuar())
+    opc = Console.input('[green]Sua opção: [/]')
+    if opc == '':
+        pass
+
+    sleep(1)

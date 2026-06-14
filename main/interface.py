@@ -2,14 +2,14 @@ from rich import print
 from rich.panel import Panel 
 
 def menu():
-    texto = Panel("""[yellow]1[/yellow] - [blue]adicionar animal[/blue]
-[yellow]2[/yellow] - [blue]remover animal[/blue]
-[yellow]3[/yellow] - [blue]adicionar adotante[/blue]
-[yellow]4[/yellow] - [blue]remover adotante[/blue]
-[yellow]5[/yellow] - [blue]listas animais[/blue]
-[yellow]6[/yellow] - [blue]listas adotantes[/blue]
-[yellow]7[/yellow] - [blue]buscar animal para adoção[/blue] 
-[yellow]8[/] - [blue]sair do sistema[/]""", title="Menu Principal",width=34)
+    texto = Panel("""[yellow]1[/yellow] - [blue]Adicionar animal[/blue]
+[yellow]2[/yellow] - [blue]Remover animal[/blue]
+[yellow]3[/yellow] - [blue]Adicionar adotante[/blue]
+[yellow]4[/yellow] - [blue]Remover adotante[/blue]
+[yellow]5[/yellow] - [blue]Lista de animais[/blue]
+[yellow]6[/yellow] - [blue]Lista de adotantes[/blue]
+[yellow]7[/yellow] - [blue]Buscar animal para adoção[/blue] 
+[yellow]8[/] - [blue]Sair do sistema[/]""", title="Menu Principal",width=34)
     print(texto)
     opc = leiaint('\033[32mSua opção: \033[m')
     return opc 
@@ -35,3 +35,7 @@ def leiaint(msg):
         if ok:
             break
     return valor
+
+def continuar():
+    texto = Panel("""[green]Precione enter para voltar para o menu principal [/]""", title="Menu Principal",width=45)
+    return texto

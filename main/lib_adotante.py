@@ -8,20 +8,20 @@ arq_adotante = 'adotante.txt'
 
 def lerArquivo_adotante(nome):
     try:
-        a = open(nome, 'rt')
+        arquivo = open(nome, 'rt')
     except:
         print('[red]Erro ao ler o arquivo[/]')
     else:
         cabeçalho('Adotantes cadastrados')
         c = 1
-        for linha in a:
+        for linha in arquivo:
             dado = linha.split(';')
             print(f'{c}. {dado[0]} - {dado[1]} - {dado[2]} - {dado[3]} - {dado[4]} - {dado[5]} - {dado[6]}')
             c += 1
         if c == 1:
             Console.print(f'[yellow]Ainda não foram adicionados adotantes a lista![/]')
     finally:
-        a.close()
+        arquivo.close()
 
 def cadastrar_adotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, data_nascimento=0, endereço='Não definido', cidade='Não definido', estado='Não definido'):
     #a = open(arq_adotante, 'r')
@@ -29,17 +29,17 @@ def cadastrar_adotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, da
     #total_linhas = str(len(linha) + 1)
     #a.close()
     try:
-        a = open(arq_adotante, 'at')
+        arquivo = open(arq_adotante, 'at')
     except:
         print('[red]Houve um ERRO na abertura do arquivo[[/]]')
     else:
         try:
-            a.write(f'{nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}\n')
+            arquivo.write(f'{nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}\n')
         except:
             print('[red]Houve um ERRO ao escrever os dados![[/]]')
         else:
             print(f'[green]Novo registro de {nome} adicionado.[/]')
-            a.close()
+            arquivo.close()
 
 def opção_3():
     cabeçalho('NOVO CADASTRADO')
@@ -52,14 +52,17 @@ def opção_3():
     estado = Console.input('[green]7.[/] Estado: ')
     cadastrar_adotante(arq_adotante,nome_adotante,idade,cpf,nascimento,endereço,cidade,estado)
 
-def remover_adotante(n):
+def remover_adotante():
     try:
-        a = open(arq_adotante, 'r')
+        arquivo = open(arq_adotante, 'r')
     except:
         print('[red]Houve um ERRO na abertura do arquivo[[/]]')
     else:
-        linha_remover = n - 1
-        linhas = a.readlines()
+        linhas = arquivo.readlines()
+        if len(linhas) == 0:
+            return f'[yellow]Ainda não foram adicionados adotantes a lista![/]'
+        quem_remover = int(input('Escolha o número de quem remover: '))
+        linha_remover = quem_remover - 1
         while True:
             if linha_remover < len(linhas):
                 del linhas[linha_remover]
