@@ -43,6 +43,8 @@ def auxílio_addAdotante(arq_adotante, nome, idade, cpf, data_nascimento, endere
             else:
                 print(f'[green]Novo registro de {nome} adicionado.[/]')
                 arquivo.close()
+            finally:
+                arquivo.close()
 
 def adicionar_adotante():
     cabeçalho2('NOVO CADASTRO')
@@ -66,9 +68,11 @@ def remover_adotante():
             return f'[yellow]Ainda não foram adicionados adotantes a lista![/]'
         while True:
             try:
-                quem_remover = int(input('Escolha o número de quem remover: '))
+                quem_remover = leiaint('Escolha o número de quem remover: ')
             except:
                 print('[red]Digite um valor válido![/]')
+            #except ValueError:
+               #print('[red]Digite um valor válido![/]')
             else:
                 break
         linha_remover = quem_remover - 1
@@ -78,7 +82,13 @@ def remover_adotante():
                 break
             else:
                 print('[red]Esse número não é válido!!![/]')
-                quem_remover = int(input('Escolha um numero válido para remover:  '))
+                while True:
+                    try:
+                        quem_remover = leiaint('Escolha o número de quem remover: ')
+                    except:
+                        print('[red]Digite um valor válido![/]')
+                    else:
+                        break
                 linha_remover = quem_remover - 1
         try:
             arquivo = open(arq_adotante, 'w')
@@ -91,3 +101,5 @@ def remover_adotante():
                 print('[red]Houve um ERRO ao remover os dados![[/]]')
             else:
                 print(f'[green]Adotante[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')
+            finally:
+                arquivo.close()

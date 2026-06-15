@@ -11,33 +11,44 @@ def menu():
 [yellow]7[/yellow] - [blue]Buscar animal para adoção[/blue] 
 [yellow]8[/] - [blue]Sair do sistema[/]""", title="Menu Principal",width=34)
     print(texto)
-    opc = leiaint('\033[32mSua opção: \033[m')
+    opc = leiaint('\033[32mSua opção: \033[m', 1)  # \033[032m = cor verde
     return opc 
-
-def cabeçalho(txt):
-    print(linha())
-    print(txt.center(42))
-    print(linha())
 
 def linha(tam = 42):
     return '-' * tam
 
-def leiaint(msg):
-    ok = False 
-    valor = 0 
-    while True:
-        n = input(msg)
-        if n.isnumeric():
-            valor = int(n)
-            ok = True
-        else:
-            print('[red]ERRO! Digite um número inteiro válido[/]')
-        if ok:
-            break
+def leiaint(msg,opc = 0):
+    if opc == 0:
+        ok = False 
+        valor = 0 
+        while True:
+            n = input(msg)
+            if n.isnumeric():
+                valor = int(n)
+                ok = True
+            else:
+                print('[red]ERRO! Digite um número inteiro válido[/]')
+            if ok:
+                break
+    else:
+        ok = False 
+        valor = 0 
+        while True:
+            n = input(msg)
+            if n.isnumeric():
+                valor = int(n)
+                if valor <= 8:
+                    ok = True
+                else:
+                    print('[red]ERRO! Digite uma opção válida![/]')
+            else:
+                print('[red]ERRO! Digite um número inteiro válido[/]')
+            if ok:
+                break
     return valor
 
 def continuar():
-    texto = Panel("""[green]Pressione enter para voltar para o menu principal [/]""", title="Menu Principal",width=45)
+    texto = Panel("""[green]Pressione enter para voltar para o menu principal [/]""", title="Retorno",width=45)
     return texto
 
 def cabeçalho2(a):
@@ -46,4 +57,4 @@ def cabeçalho2(a):
 
 def loop():
     string = Panel("Repetir ação, ou voltar ao menu principal? (R = repetir / V = voltar): ", title='', width=45)
-    print(string)
+    print(string) 

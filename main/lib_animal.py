@@ -8,7 +8,7 @@ arq_animais = 'animais.txt'
 def auxílio_addAnimal(arq_animais, nome_animal, especie_animal, raca_animal,
     cor_animal, porte_animal, idade_animal, observacao_animal = "Não ha observações."  ):
     try:
-        arquivo = open(arq_animais, 'at')
+        arquivo = open(arq_animais, 'at') # at = append text (adicionar texto)
     except:
         print("Houve um erro ao adicionar os dados do animal!")
     else:
@@ -24,11 +24,13 @@ def auxílio_addAnimal(arq_animais, nome_animal, especie_animal, raca_animal,
                 print("Houve um erro ao escrever os dados!")
             else:
                 print(f"Novo registro de [blue]{nome_animal}[/] adicionado.")
+            finally:
+                arquivo.close()
 
 def lista_animais(arq_animais='animais.txt'):
     
     try:
-        arquivo = open(arq_animais, 'rt')
+        arquivo = open(arq_animais, 'rt') # read text (ler lexto)
     except:
         console.print(f'[red]Erro ao abrir o arquivo![/]')
     else:
@@ -41,6 +43,8 @@ def lista_animais(arq_animais='animais.txt'):
             contador +=1
         if contador == 1:
             console.print(f"[yellow]Ainda não foram adicionados animais a lista![/]")
+    finally:
+        arquivo.close()
 
 def adicionar_animal():
     cabeçalho2('NOVO CADASTRO')
@@ -55,7 +59,7 @@ def adicionar_animal():
 
 def remover_animal():
     try:
-        arquivo = open(arq_animais, 'r')
+        arquivo = open(arq_animais, 'r') #read (ler)
     except:
         print(f'[red]Houve um erro ao tentar ler o arquivo')
     else:
@@ -64,7 +68,7 @@ def remover_animal():
             return f'[yellow]Ainda não foram adicionados adotantes a lista![/]'
         while True:
             try:
-                quem_remover = int(input('Escolha o número de quem remover: '))
+                quem_remover = leiaint('Escolha o número de quem remover: ')
             except:
                 print('[red]Digite um valor válido![/]')
             else:
@@ -76,10 +80,16 @@ def remover_animal():
                 break
             else:
                 console.print('[red]Esse número não é valido[/]')
-                quem_remover = int(input("Escolha um numero válido para remover: "))
+                while True:
+                    try:
+                        quem_remover = leiaint('Escolha o número de quem remover: ')
+                    except:
+                        print('[red]Digite um valor válido![/]')
+                    else:
+                        break
                 animal_remover = quem_remover - 1
         try:
-            arquivo = open(arq_animais, 'w')
+            arquivo = open(arq_animais, 'w') #write (escrever)
         except:
             console.print(f'[red]Não foi possivel ler a lista![/]')
         else:
@@ -89,6 +99,8 @@ def remover_animal():
                 console.print(f'[red] Houve um erro ao remover os dados')
             else:
                 console.print(f'[green]Animal[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')
+        finally:
+            arquivo.close()
 
 def buscar_animal():
     cabeçalho2('BUSCAR ANIMAL PARA ADOÇÃO')

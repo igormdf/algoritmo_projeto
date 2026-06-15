@@ -73,7 +73,7 @@ while True:
                 break
 
     elif resposta == 8:
-        cabeçalho('Saindo do sistema... Até logo!')
+        cabeçalho2('Saindo do sistema... Até logo!')
         break
 
     else:
