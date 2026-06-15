@@ -5,19 +5,25 @@ from interface import *
 console = Console()
 arq_animais = 'animais.txt'
 
-def auxílio_addAnimal(arq_animais = "animais.txt", nome_animal = "deconhecido", especie_animal = "desconhecida", raca_animal = "raça não informada",
-    cor_animal = "cor não informada", porte_animal = "Porte não informado", idade_animal = "0", observacao_animal = "Não ha observações."  ):
+def auxílio_addAnimal(arq_animais, nome_animal, especie_animal, raca_animal,
+    cor_animal, porte_animal, idade_animal, observacao_animal = "Não ha observações."  ):
     try:
         arquivo = open(arq_animais, 'at')
     except:
         print("Houve um erro ao adicionar os dados do animal!")
     else:
-        try:
-            arquivo.write(f'{nome_animal};{especie_animal};{raca_animal};{cor_animal};{porte_animal};{idade_animal};{observacao_animal};\n')
-        except:
-            print("Houve um erro ao escrever os dados!")
+        if (nome_animal == '' or especie_animal == '' or raca_animal == '' or
+            cor_animal == '' or porte_animal == '' or idade_animal == ''):
+            console.print('[red]ERRO!!Todos os dados não foram preenchidos.[/]')
+            console.print('[red]Prencha os dados novamente de maneira correta.[/]')
+            adicionar_animal()
         else:
-            print(f"Novo registro de [blue]{nome_animal}[/] adicionado.")
+            try:
+                arquivo.write(f'{nome_animal};{especie_animal};{raca_animal};{cor_animal};{porte_animal};{idade_animal};{observacao_animal};\n')
+            except:
+                print("Houve um erro ao escrever os dados!")
+            else:
+                print(f"Novo registro de [blue]{nome_animal}[/] adicionado.")
 
 def lista_animais(arq_animais='animais.txt'):
     
@@ -37,6 +43,7 @@ def lista_animais(arq_animais='animais.txt'):
             console.print(f"[yellow]Ainda não foram adicionados animais a lista![/]")
 
 def adicionar_animal():
+    cabeçalho2('NOVO CADASTRO')
     nome_animal = console.input("[green]1.[/] Digite o nome do animal: ")
     especie_animal = console.input("[green]2.[/] Digite a espécie do animal que será adicionado: ")
     raca_animal = console.input("[green]3.[/] Digite a raça do animal: ")

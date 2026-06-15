@@ -23,29 +23,32 @@ def lerArquivo_adotante(nome):
     finally:
         arquivo.close()
 
-def auxílio_addAdotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, data_nascimento=0, endereço='Não definido', cidade='Não definido', estado='Não definido'):
-    #a = open(arq_adotante, 'r')
-    #linha = a.readlines()
-    #total_linhas = str(len(linha) + 1)
-    #a.close()
+def auxílio_addAdotante(arq_adotante, nome, idade, cpf, data_nascimento, endereço, cidade, estado):
     try:
         arquivo = open(arq_adotante, 'at')
     except:
         print('[red]Houve um ERRO na abertura do arquivo[[/]]')
     else:
-        try:
-            arquivo.write(f'{nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}\n')
-        except:
-            print('[red]Houve um ERRO ao escrever os dados![[/]]')
+        if (nome == '' or idade == '' or cpf == '' or
+            data_nascimento == '' or endereço == '' or
+            cidade == '' or estado == '' or len(cpf) != 11):
+            Console.print('[red]ERRO!!Todos os dados não foram preenchidos com sucesso.[/]')
+            Console.print('[red]Prencha os dados novamente de maneira correta.[/]')
+            adicionar_adotante()
         else:
-            print(f'[green]Novo registro de {nome} adicionado.[/]')
-            arquivo.close()
+            try:
+                arquivo.write(f'{nome};{idade} anos;{cpf};{data_nascimento};{endereço};{cidade};{estado}\n')
+            except:
+                print('[red]Houve um ERRO ao escrever os dados![[/]]')
+            else:
+                print(f'[green]Novo registro de {nome} adicionado.[/]')
+                arquivo.close()
 
 def adicionar_adotante():
-    cabeçalho('NOVO CADASTRADO')
+    cabeçalho2('NOVO CADASTRO')
     nome_adotante = Console.input('[green]1.[/] Nome: ')
     idade = Console.input('[green]2.[/] idade: ')
-    cpf = Console.input('[green]3.[/] CPF[xxx.xxx.xxx-xx]: ')
+    cpf = Console.input('[green]3.[/] CPF[11 dígitos]: ')
     nascimento = Console.input('[green]4.[/] Data de nascimento[xx/xx/xxxx]: ')
     endereço = Console.input('[green]5.[/] Endereço: ')
     cidade = Console.input('[green]6.[/] Cidade: ')
