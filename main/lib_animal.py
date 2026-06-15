@@ -55,10 +55,16 @@ def remover_animal():
         linhas = arquivo.readlines()
         if len(linhas) == 0:
             return f'[yellow]Ainda não foram adicionados adotantes a lista![/]'
-        quem_remover = int(input('Escolha o número de qual animal remover: '))
+        while True:
+            try:
+                quem_remover = int(input('Escolha o número de quem remover: '))
+            except:
+                print('[red]Digite um valor válido![/]')
+            else:
+                break
         animal_remover = quem_remover - 1
         while True:
-            if animal_remover <= len(linhas):
+            if animal_remover < len(linhas):
                 del linhas[animal_remover]
                 break
             else:
@@ -73,7 +79,7 @@ def remover_animal():
             try:
                 arquivo.writelines(linhas)
             except:
-                console.print(f'[red] Houve um erro ao escrever os dados')
+                console.print(f'[red] Houve um erro ao remover os dados')
             else:
                 console.print(f'[green]Animal[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')
 

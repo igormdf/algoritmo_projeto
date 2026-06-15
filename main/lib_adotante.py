@@ -61,10 +61,16 @@ def remover_adotante():
         linhas = arquivo.readlines()
         if len(linhas) == 0:
             return f'[yellow]Ainda não foram adicionados adotantes a lista![/]'
-        quem_remover = int(input('Escolha o número de quem remover: '))
+        while True:
+            try:
+                quem_remover = int(input('Escolha o número de quem remover: '))
+            except:
+                print('[red]Digite um valor válido![/]')
+            else:
+                break
         linha_remover = quem_remover - 1
         while True:
-            if linha_remover <= len(linhas):
+            if linha_remover < len(linhas):
                 del linhas [linha_remover]
                 break
             else:
@@ -79,6 +85,6 @@ def remover_adotante():
             try:
                 arquivo.writelines(linhas)
             except:
-                print('[red]Houve um ERRO ao escrever os dados![[/]]')
+                print('[red]Houve um ERRO ao remover os dados![[/]]')
             else:
                 print(f'[green]Adotante[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')
