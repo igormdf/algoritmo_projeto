@@ -26,7 +26,7 @@ def lista_animais(arq_animais='animais.txt'):
     except:
         console.print(f'[red]Erro ao abrir o arquivo![/]')
     else:
-        cabeçalho2("     Animais cadastrados")
+        cabeçalho2("Animais cadastrados")
         contador = 1
         for i in arquivo:       
             dado = i.split(';')
@@ -84,7 +84,7 @@ def remover_animal():
                 console.print(f'[green]Animal[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')
 
 def buscar_animal():
-    cabeçalho('BUSCAR ANIMAL PARA ADOÇÃO')
+    cabeçalho2('BUSCAR ANIMAL PARA ADOÇÃO')
 
     nome = console.input('[green]Nome (Ou Enter para pular): [/]').strip().lower()
     especie = console.input('[green]Espécie (Ou Enter para pular): [/]').strip().lower()
@@ -96,12 +96,12 @@ def buscar_animal():
     try:
         arquivo = open(arq_animais, 'rt')
     except:
-        console.print('[red]Erro ao abrir o arquivo![/]')
+        console.print('Erro ao abrir o arquivo!')
     else:
         encontrados = False
         contador = 1
 
-        cabeçalho('RESULTADOS DA BUSCA')
+        cabeçalho2('RESULTADOS DA BUSCA')
 
         for linha in arquivo:
             dado = linha.strip().split(';')

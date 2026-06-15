@@ -41,7 +41,7 @@ def continuar():
     return texto
 
 def cabeçalho2(a):
-    texto = Panel(a, title="",width=34)
+    texto = Panel(a.center(31),width=34)
     print(texto)
 
 def loop():

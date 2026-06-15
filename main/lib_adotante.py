@@ -12,7 +12,7 @@ def lerArquivo_adotante(nome):
     except:
         print('[red]Erro ao ler o arquivo[/]')
     else:
-        cabeçalho2("     Adotantes cadastrados")
+        cabeçalho2("Adotantes cadastrados")
         c = 1
         for linha in arquivo:
             dado = linha.split(';')
