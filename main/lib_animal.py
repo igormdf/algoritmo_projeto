@@ -37,7 +37,7 @@ def lista_animais(arq_animais='animais.txt'):
         for i in arquivo:       
             dado = i.split(';')
             dado[1] = dado[1].replace('\n',';')
-            console.print(f'{contador}. {dado[0]} - {dado[1]} - {dado[2]} - {dado[3]} - {dado[4]} - {dado[5]} - {dado[6]} {dado[7]}')
+            console.print(f'{contador}. [bold blue]Nome:[/] {dado[0]} | [bold blue]Espécie:[/] {dado[1]} | [bold blue]Raça:[/] {dado[2]} | [bold blue]Cor:[/] {dado[3]} | [bold blue]Porte:[/] {dado[4]} | [bold blue]Idade:[/] {dado[5]} anos | [bold blue]Observação:[/] {dado[6]}')
             contador +=1
         if contador == 1:
             console.print(f"[yellow]Ainda não foram adicionados animais a lista![/]")

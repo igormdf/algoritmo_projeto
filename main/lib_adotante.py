@@ -16,7 +16,7 @@ def lerArquivo_adotante(nome):
         c = 1
         for linha in arquivo:
             dado = linha.split(';')
-            print(f'{c}. {dado[0]} - {dado[1]} - {dado[2]} - {dado[3]} - {dado[4]} - {dado[5]} - {dado[6]}')
+            print(f'{c}. [bold blue]Nome:[/] {dado[0]} | [bold blue]Idade:[/] {dado[1]} | [bold blue]CPF:[/] {dado[2]} | [bold blue]Nascimento:[/] {dado[3]} | [bold blue]Endereço:[/] {dado[4]} | [bold blue]Cidade:[/] {dado[5]} | [bold blue]Estado:[/] {dado[6]}')
             c += 1
         if c == 1:
             Console.print(f'[yellow]Ainda não foram adicionados adotantes a lista![/]')
@@ -31,7 +31,7 @@ def auxílio_addAdotante(arq_adotante, nome, idade, cpf, data_nascimento, endere
     else:
         if (nome == '' or idade == '' or cpf == '' or
             data_nascimento == '' or endereço == '' or
-            cidade == '' or estado == '' or len(cpf) != 11):
+            cidade == '' or estado == '' or len(cpf) != 11 or len(data_nascimento) != 8):
             Console.print('[red]ERRO!!Todos os dados não foram preenchidos com sucesso.[/]')
             Console.print('[red]Prencha os dados novamente de maneira correta.[/]')
             adicionar_adotante()
@@ -49,7 +49,7 @@ def adicionar_adotante():
     nome_adotante = Console.input('[green]1.[/] Nome: ')
     idade = Console.input('[green]2.[/] idade: ')
     cpf = Console.input('[green]3.[/] CPF[11 dígitos]: ')
-    nascimento = Console.input('[green]4.[/] Data de nascimento[xx/xx/xxxx]: ')
+    nascimento = Console.input('[green]4.[/] Data de nascimento [DD/MM/YYYY]: ')
     endereço = Console.input('[green]5.[/] Endereço: ')
     cidade = Console.input('[green]6.[/] Cidade: ')
     estado = Console.input('[green]7.[/] Estado: ')
