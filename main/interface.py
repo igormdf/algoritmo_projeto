@@ -36,6 +36,14 @@ def leiaint(msg):
             break
     return valor
 
-def continuar(opc):
-    texto = Panel("""[green]Precione enter para voltar para o menu principal [/]""", title="Menu Principal",width=45)
+def continuar():
+    texto = Panel("""[green]Pressione enter para voltar para o menu principal [/]""", title="Menu Principal",width=45)
     return texto
+
+def cabeçalho2(a):
+    texto = Panel(a, title="",width=34)
+    print(texto)
+
+def loop():
+    string = Panel("Repetir ação, ou voltar ao menu principal? (R = repetir / V = voltar): ", title='', width=45)
+    print(string)

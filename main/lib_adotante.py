@@ -12,7 +12,7 @@ def lerArquivo_adotante(nome):
     except:
         print('[red]Erro ao ler o arquivo[/]')
     else:
-        cabeçalho('Adotantes cadastrados')
+        cabeçalho2("     Adotantes cadastrados")
         c = 1
         for linha in arquivo:
             dado = linha.split(';')
@@ -69,7 +69,7 @@ def remover_adotante():
                 break
             else:
                 print('[red]Esse número não é válido!!![/]')
-                quem_remover = int(input('Escolha o número de quem remover: '))
+                quem_remover = int(input('Escolha um numero válido para remover:  '))
                 linha_remover = quem_remover - 1
         try:
             arquivo = open(arq_adotante, 'w')
@@ -81,4 +81,4 @@ def remover_adotante():
             except:
                 print('[red]Houve um ERRO ao escrever os dados![[/]]')
             else:
-                print(f'[green]Adotante[/] correspondente ao número {quem_remover} [red]removida com sucesso[/]')
+                print(f'[green]Adotante[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')

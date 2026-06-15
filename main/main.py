@@ -19,44 +19,63 @@ if not arquivoExiste(arq_adotante):
 while True:
     resposta = menu()
     if resposta == 1:
-        adicionar_animal()
+        while True:
+            adicionar_animal()
+            loop()
+            opçao = Console.input('[green]Sua opção: [/]').lower()
+            if opçao == "v":
+                break
+
     elif resposta == 2:
-        lista_animais()
-        print(linha())
-        remover_animal()
-        print(continuar())
-        opc = Console.input('')
+        while True:
+            lista_animais()
+            print(linha())
+            remover_animal()
+            loop()
+            opçao = Console.input('[green]Sua opção: [/]').lower()
+            if opçao == "v":
+                break
+
     elif resposta == 3:
-        adicionar_animal()
-        print(continuar())
-        opc = Console.input('')
+        while True:
+            adicionar_adotante()
+            loop()
+            opçao = Console.input('[green]Sua opção: [/]').lower()
+            if opçao == "v":
+                break
+
     elif resposta == 4:
-        lerArquivo_adotante(arq_adotante)
-        print(linha())
-        remover_adotante()
-        print(continuar())
-        opc = Console.input('')
+        while True:
+            lerArquivo_adotante(arq_adotante)
+            print(linha())
+            remover_adotante()
+            loop()
+            opçao = Console.input('[green]Sua opção: [/]').lower()
+            if opçao == "v":
+                break
+
     elif resposta == 5:
         lista_animais(arq_animais)
         print(continuar())
         opc = Console.input('')
+
     elif resposta==6:
         lerArquivo_adotante(arq_adotante)
         print(continuar())
         opc = Console.input('')
+
     elif resposta == 7:
-        buscar_animal()
-        print(continuar())
-        opc = Console.input('')
+        while True:
+            buscar_animal()
+            loop()
+            opçao = Console.input('[green]Sua opção: [/]').lower()
+            if opçao == "v":
+                break
+
     elif resposta == 8:
-        cabeçalho('Saindo so sistema... até logo!')
+        cabeçalho('Saindo do sistema... Até logo!')
         break
+
     else:
         print('[red]ERRO! Digite uma opção válida![/]')
-
-    print(continuar())
-    opc = Console.input('')
-    if opc == '':
-        pass
-
     sleep(1)

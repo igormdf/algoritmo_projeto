@@ -20,12 +20,13 @@ def auxílio_addAnimal(arq_animais = "animais.txt", nome_animal = "deconhecido",
             print(f"Novo registro de [blue]{nome_animal}[/] adicionado.")
 
 def lista_animais(arq_animais='animais.txt'):
+    
     try:
         arquivo = open(arq_animais, 'rt')
     except:
         console.print(f'[red]Erro ao abrir o arquivo![/]')
     else:
-        cabeçalho("Animais cadastrados")
+        cabeçalho2("     Animais cadastrados")
         contador = 1
         for i in arquivo:       
             dado = i.split(';')
@@ -62,7 +63,7 @@ def remover_animal():
                 break
             else:
                 console.print('[red]Esse número não é valido[/]')
-                quem_remover = int(input("Escolha um numero válido para resolver: "))
+                quem_remover = int(input("Escolha um numero válido para remover: "))
                 animal_remover = quem_remover - 1
         try:
             arquivo = open(arq_animais, 'w')
@@ -74,7 +75,7 @@ def remover_animal():
             except:
                 console.print(f'[red] Houve um erro ao escrever os dados')
             else:
-                console.print(f'[green]Animal[/] correspondente ao número {quem_remover} [red]removida com sucesso[/]')
+                console.print(f'[green]Animal[/] correspondente ao número {quem_remover} [red]removido com sucesso[/]')
 
 def buscar_animal():
     cabeçalho('BUSCAR ANIMAL PARA ADOÇÃO')
