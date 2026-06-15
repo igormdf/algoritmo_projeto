@@ -5,7 +5,7 @@ from interface import *
 console = Console()
 arq_animais = 'animais.txt'
 
-def adicionar_animal(arq_animais = "animais.txt", nome_animal = "deconhecido", especie_animal = "desconhecida", raca_animal = "raça não informada",
+def auxílio_addAnimal(arq_animais = "animais.txt", nome_animal = "deconhecido", especie_animal = "desconhecida", raca_animal = "raça não informada",
     cor_animal = "cor não informada", porte_animal = "Porte não informado", idade_animal = "0", observacao_animal = "Não ha observações."  ):
     try:
         arquivo = open(arq_animais, 'at')
@@ -35,23 +35,23 @@ def lista_animais(arq_animais='animais.txt'):
         if contador == 1:
             console.print(f"[yellow]Ainda não foram adicionados animais a lista![/]")
 
-def opção_1():
+def adicionar_animal():
     nome_animal = console.input("[green]1.[/] Digite o nome do animal: ")
     especie_animal = console.input("[green]2.[/] Digite a espécie do animal que será adicionado: ")
     raca_animal = console.input("[green]3.[/] Digite a raça do animal: ")
     cor_animal = console.input("[green]4.[/] Digite a cor do animal: ")
     porte_animal = console.input("[green]5.[/] Informe se o porte do animal é Pequeno, Médio ou Grande: ")
     idade_animal = console.input("[green]6.[/] Informe a idade do animal: ")
-    observacao_animal = console.input("[green]7.[/]Observação: ")
-    adicionar_animal(arq_animais,nome_animal,especie_animal,raca_animal,cor_animal,porte_animal,idade_animal,observacao_animal)
+    observacao_animal = console.input("[green]7.[/] Observação: ")
+    auxílio_addAnimal(arq_animais,nome_animal,especie_animal,raca_animal,cor_animal,porte_animal,idade_animal,observacao_animal)
 
 def remover_animal():
     try:
-        a = open(arq_animais, 'r')
+        arquivo = open(arq_animais, 'r')
     except:
         print(f'[red]Houve um erro ao tentar ler o arquivo')
     else:
-        linhas = a.readlines()
+        linhas = arquivo.readlines()
         if len(linhas) == 0:
             return f'[yellow]Ainda não foram adicionados adotantes a lista![/]'
         quem_remover = int(input('Escolha o número de qual animal remover: '))
@@ -62,18 +62,19 @@ def remover_animal():
                 break
             else:
                 console.print('[red]Esse número não é valido[/]')
-                n = int(input("Escolha um numero válido para resolver: "))
+                quem_remover = int(input("Escolha um numero válido para resolver: "))
+                animal_remover = quem_remover - 1
         try:
-            a = open(arq_animais, 'w')
+            arquivo = open(arq_animais, 'w')
         except:
             console.print(f'[red]Não foi possivel ler a lista![/]')
         else:
             try:
-                a.writelines(linhas)
+                arquivo.writelines(linhas)
             except:
                 console.print(f'[red] Houve um erro ao escrever os dados')
             else:
-                console.print(f'[green]Animal[/] correspondente ao número {n} [red]removida com sucesso[/]')
+                console.print(f'[green]Animal[/] correspondente ao número {quem_remover} [red]removida com sucesso[/]')
 
 def buscar_animal():
     cabeçalho('BUSCAR ANIMAL PARA ADOÇÃO')

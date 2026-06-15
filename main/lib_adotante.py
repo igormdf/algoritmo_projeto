@@ -23,7 +23,7 @@ def lerArquivo_adotante(nome):
     finally:
         arquivo.close()
 
-def cadastrar_adotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, data_nascimento=0, endereço='Não definido', cidade='Não definido', estado='Não definido'):
+def auxílio_addAdotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, data_nascimento=0, endereço='Não definido', cidade='Não definido', estado='Não definido'):
     #a = open(arq_adotante, 'r')
     #linha = a.readlines()
     #total_linhas = str(len(linha) + 1)
@@ -41,7 +41,7 @@ def cadastrar_adotante(arq_adotante, nome = 'desconhecido', idade = 0, cpf=0, da
             print(f'[green]Novo registro de {nome} adicionado.[/]')
             arquivo.close()
 
-def opção_3():
+def adicionar_adotante():
     cabeçalho('NOVO CADASTRADO')
     nome_adotante = Console.input('[green]1.[/] Nome: ')
     idade = Console.input('[green]2.[/] idade: ')
@@ -50,7 +50,7 @@ def opção_3():
     endereço = Console.input('[green]5.[/] Endereço: ')
     cidade = Console.input('[green]6.[/] Cidade: ')
     estado = Console.input('[green]7.[/] Estado: ')
-    cadastrar_adotante(arq_adotante,nome_adotante,idade,cpf,nascimento,endereço,cidade,estado)
+    auxílio_addAdotante(arq_adotante,nome_adotante,idade,cpf,nascimento,endereço,cidade,estado)
 
 def remover_adotante():
     try:
@@ -64,20 +64,21 @@ def remover_adotante():
         quem_remover = int(input('Escolha o número de quem remover: '))
         linha_remover = quem_remover - 1
         while True:
-            if linha_remover < len(linhas):
-                del linhas[linha_remover]
+            if linha_remover <= len(linhas):
+                del linhas [linha_remover]
                 break
             else:
                 print('[red]Esse número não é válido!!![/]')
-                n = int(input('Escolha o número de quem remover: '))
+                quem_remover = int(input('Escolha o número de quem remover: '))
+                linha_remover = quem_remover - 1
         try:
-            a = open(arq_adotante, 'w')
+            arquivo = open(arq_adotante, 'w')
         except:
             print('[red]Houve um ERRO na abertura do arquivo[[/]]')
         else:
             try:
-                a.writelines(linhas)
+                arquivo.writelines(linhas)
             except:
                 print('[red]Houve um ERRO ao escrever os dados![[/]]')
             else:
-                print(f'[green]Adotante[/] correspondente ao número {n} [red]removida com sucesso[/]')
+                print(f'[green]Adotante[/] correspondente ao número {quem_remover} [red]removida com sucesso[/]')

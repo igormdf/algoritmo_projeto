@@ -36,6 +36,6 @@ def leiaint(msg):
             break
     return valor
 
-def continuar():
+def continuar(opc):
     texto = Panel("""[green]Precione enter para voltar para o menu principal [/]""", title="Menu Principal",width=45)
     return texto

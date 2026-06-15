@@ -2,7 +2,7 @@ from rich import print
 
 def arquivoExiste(nome):
     try:
-        a = open(nome,'rt')
+        arquivo = open(nome,'rt')
     except FileNotFoundError:
         return False
     else:
@@ -10,7 +10,7 @@ def arquivoExiste(nome):
     
 def criarArquivo(nome):
     try:
-        a = open(nome, 'wt+')
+        arquivo = open(nome, 'wt+')
     except:
         print('[red]Houve um ERRO ao criar o arquivo![[/]]')
     else:
